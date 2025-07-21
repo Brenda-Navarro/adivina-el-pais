@@ -21,30 +21,23 @@ Después de cada partida, el jugador puede elegir si desea volver a jugar o no.
 
 1. Descarga o clona este repositorio.
 2. Asegúrate de tener Python instalado.
-3. Ejecuta el archivo en la terminal o IDE:
+3. Ejecuta el archivo en la terminal o IDE
 
-```bash
-python adivina_el_pais.py
-
-ahorcado/
 ├── adivina_el_pais.py # Código fuente del juego
-└── README.md          # Este archivo con la documentación
+└── README.md # Este archivo con la documentación
 
 Este juego aplica conceptos básicos y esenciales aprendidos en clase:
 
 ✅ Estructuras de control: if, while, for
 ✅ Colecciones: set, dict, list
-✅  Funciones y modularización
-✅  Recursividad
-✅  Validación de entrada de usuario
-✅  Uso del módulo random
-✅  Decoradores personalizados para formato
-✅  Generadores para mostrar el estado de la palabra
+✅ Funciones y modularización
+✅ Recursividad
+✅ Validación de entrada de usuario
+✅ Uso del módulo random
+✅ Decoradores personalizados para formato
+✅ Generadores para mostrar el estado de la palabra
 
 👩‍💻 Autor
 #Brenda Navarro
 #Estudiante de programación ADA ITW – Proyecto académico en Python.
 #Contacto: bnavarro0403@gmail.com
-
-```
-# adivina-el-pais
