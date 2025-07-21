@@ -23,8 +23,8 @@ Después de cada partida, el jugador puede elegir si desea volver a jugar o no.
 2. Asegúrate de tener Python instalado.
 3. Ejecuta el archivo en la terminal o IDE
 
-├── adivina_el_pais.py # Código fuente del juego
-└── README.md # Este archivo con la documentación
+├── adivina_el_pais.py #Código fuente del juego
+└── README.md #Este archivo con la documentación
 
 Este juego aplica conceptos básicos y esenciales aprendidos en clase:
 
