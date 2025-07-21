@@ -1,59 +1,104 @@
-
 import random
 
-# Lista de países
-paises = ['argentina', 'portugal', 'tailandia', 'ucrania', 'canada', 'kenia', 'vietnam', 'suecia', 'egipto', 'paraguay']
+# ========= 1. Diccionario con 20 países y sus pistas =========
+paises = {
+    "ITALIA": "País europeo con forma de bota.",
+    "PERU": "Tiene Machu Picchu y está en Sudamérica.",
+    "JAPON": "Isla asiática famosa por su tecnología.",
+    "EGIPTO": "Conocido por las pirámides y el Nilo.",
+    "CANADA": "País muy frío en América del Norte.",
+    "INDIA": "Tiene el Taj Mahal y muchas especias.",
+    "CHILE": "País largo y angosto en Sudamérica.",
+    "KENIA": "Famoso por sus safaris africanos.",
+    "GRECIA": "Cuna de la democracia.",
+    "AUSTRALIA": "Donde viven los canguros.",
+    "MEXICO": "Tiene mariachi, tacos y tequila.",
+    "CHINA": "Gran Muralla y dragones.",
+    "ESPAÑA": "Flamenco, paella y siesta.",
+    "FRANCIA": "La Torre Eiffel y el vino.",
+    "ALEMANIA": "Cuna de Beethoven y los autos.",
+    "ARGENTINA": "Famosa por el tango y Messi.",
+    "BRASIL": "Samba, carnaval y Amazonía.",
+    "COLOMBIA": "Café, arepas y flores.",
+    "TURQUIA": "Cruce entre Europa y Asia.",
+    "COREA": "Del K-pop y alta tecnología."
+}
 
-def elegir_palabra():
-    return random.choice(paises)
+# ========= 2. Decorador para imprimir separadores =========
+def separar(func):
+    def wrapper(*args, **kwargs):
+        print("\n" + "-" * 45)
+        resultado = func(*args, **kwargs)
+        print("-" * 45 + "\n")
+        return resultado
+    return wrapper
 
-def mostrar_palabra(palabra, letras_adivinadas):
-    return " ".join([letra if letra in letras_adivinadas else "_" for letra in palabra])
+# ========= 3. Generador para mostrar progreso =========
+def generar_ocultas(palabra, letras):
+    return (letra if letra in letras else "_" for letra in palabra)
 
-def jugar():
-    palabra = elegir_palabra()
-    letras_adivinadas = set()
-    letras_incorrectas = set()
-    vidas = 6
-
-    print("\n🌎 ¡Bienvenido a Adivina el País!")
-
-    while vidas > 0:
-        print("\nPaís:", mostrar_palabra(palabra, letras_adivinadas))
-        print(f"❤️ Vidas: {vidas}")
-        print(f"❌ Letras incorrectas: {', '.join(sorted(letras_incorrectas))}")
-
-        intento = input("🔤 Ingresa una letra: ").lower()
-
-        if len(intento) != 1 or not intento.isalpha():
-            print("⚠️ Por favor, ingresa una sola letra válida.")
-            continue
-
-        if intento in letras_adivinadas or intento in letras_incorrectas:
-            print("⚠️ Ya has intentado esa letra.")
-            continue
-
-        if intento in palabra:
-            letras_adivinadas.add(intento)
-            print("✅ ¡Bien! Esa letra está en el país.")
-        else:
-            letras_incorrectas.add(intento)
-            vidas -= 1
-            print("❌ Esa letra no está en el país.")
-
-        if all(letra in letras_adivinadas for letra in palabra):
-            print(f"\n🎉 ¡Ganaste! El país era: {palabra.upper()}")
-            break
-    else:
-        print(f"\n💀 ¡Perdiste! El país era: {palabra.upper()}")
-
-def menu():
+# ========= 4. Función anidada para validar la letra =========
+def obtener_letra():
+    def es_valida(letra):
+        return letra.isalpha() and len(letra) == 1
     while True:
-        jugar()
-        opcion = input("\n¿Quieres jugar otra vez? (s/n): ").lower()
-        if opcion != "s":
-            print("👋 ¡Gracias por jugar! Hasta la próxima.")
+        entrada = input("Ingresa una letra: ").upper()
+        if es_valida(entrada):
+            return entrada
+        print("❌ Solo se acepta UNA letra válida del alfabeto.")
+
+# ========= 5. Mostrar estado del juego =========
+@separar
+def mostrar_estado(palabra, letras_correctas, letras_erradas, vidas, pista):
+    progreso = " ".join(generar_ocultas(palabra, letras_correctas))
+    print(f"📌 Pista: {pista}")
+    print(f"🔤 Palabra: {progreso}")
+    print(f"❤️ Vidas restantes: {vidas}")
+    if letras_erradas:
+        print(f"❌ Letras incorrectas: {', '.join(sorted(letras_erradas))}")
+
+# ========= 6. Juego principal con *args y **kwargs =========
+def jugar_adivina_el_pais(*args, **kwargs):
+    palabra, pista = random.choice(list(paises.items()))
+    letras_correctas = set()
+    letras_erradas = set()
+    vidas = kwargs.get("vidas", 6)
+
+    while True:
+        mostrar_estado(palabra, letras_correctas, letras_erradas, vidas, pista)
+        letra = obtener_letra()
+
+        if letra in letras_correctas or letra in letras_erradas:
+            print("⚠️ Ya ingresaste esa letra.")
+            continue
+
+        if letra in palabra:
+            letras_correctas.add(letra)
+        else:
+            letras_erradas.add(letra)
+            vidas -= 1
+
+        if set(palabra) <= letras_correctas:
+            mostrar_estado(palabra, letras_correctas, letras_erradas, vidas, pista)
+            print("🎉 ¡Felicidades! Adivinaste el país correctamente.")
+            break
+        elif vidas == 0:
+            mostrar_estado(palabra, letras_correctas, letras_erradas, vidas, pista)
+            print(f"💀 ¡Perdiste! El país era: {palabra}")
             break
 
+# ========= 7. Recursividad para repetir el juego =========
+def iniciar_juego():
+    jugar_adivina_el_pais(vidas=6)
+    otra = input("¿Deseas jugar otra vez? (s/n): ").lower()
+    if otra == "s":
+        iniciar_juego()
+    else:
+        print("👋 ¡Gracias por jugar 'Adivina el País'!")
+
+# ========= 8. Inicio del juego =========
 if __name__ == "__main__":
-    menu()
+    print("🌍 Bienvenido a 'Adivina el País'")
+    print("Adivina letra por letra el país oculto.")
+    print("Tienes 6 vidas. Cada error te cuesta una vida.")
+    iniciar_juego()

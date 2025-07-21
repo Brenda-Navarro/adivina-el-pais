@@ -1,34 +1,44 @@
+# 🌍 Adivina el País - Juego en Python
 
-# 🌎 Adivina el País - Juego en Python
+Un juego interactivo en consola para adivinar países del mundo, utilizando programación funcional y estructuras avanzadas en Python.
 
-Versión interactiva por consola del clásico juego de adivinar la palabra, esta vez usando nombres de países del mundo.
+---
 
-## 🎮 Cómo se juega
+## 🎯 Objetivo
 
-- El programa elige un país al azar (oculto con guiones).
-- Tienes 6 vidas para adivinarlo letra por letra.
-- Cada error te resta una vida.
-- Ganas si adivinas todas las letras antes de quedarte sin vidas.
+El jugador debe adivinar el nombre de un país letra por letra, con una pista proporcionada por el programa. Tiene 6 vidas para lograrlo. Cada error le resta una vida.
 
-## 🌍 Lista de países usados
+---
 
-```
-argentina, portugal, tailandia, ucrania, canada,
-kenia, vietnam, suecia, egipto, paraguay
-```
+## 🧠 Conceptos aplicados
 
-## 🛠 Cómo ejecutar
+Este proyecto fue desarrollado con fines educativos e incluye los siguientes temas del curso:
 
-1. Abre terminal en la carpeta del archivo.
-2. Ejecuta:
+- ✅ Funciones anidadas
+- ✅ Funciones recursivas
+- ✅ Decoradores
+- ✅ Funciones `lambda`
+- ✅ Generadores
+- ✅ Manejo de `*args` y `**kwargs`
+- ✅ Diccionarios (llaves, valores, eliminación)
+- ✅ Sets (conjuntos)
+- ✅ List comprehension
+- ✅ Estructuras `while` y `for`
+- ✅ Enumerate, range
+- ✅ Control de flujo: `break`, `continue`, `return`
+- ✅ Validación de datos
 
-```bash
-python adivina_el_pais.py
-```
+---
 
-¡Y listo!
+## 🎮 Cómo jugar
 
-## 👩‍💻 Autor
+1. Al iniciar el programa, se seleccionará un país aleatorio de una lista de 20.
+2. Se mostrará una pista y los espacios en blanco para cada letra.
+3. El jugador debe ingresar letras una por una.
+4. Si acierta, se revela la letra. Si se equivoca, pierde una vida.
+5. El juego termina cuando:
+   - Se adivina todo el país ✅
+   - Se terminan las vidas ❌
+   - El jugador decide salir 🚪
 
-Hecho con 💻 por Brenda Navarro
-
+---

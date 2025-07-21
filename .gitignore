@@ -1,8 +1,38 @@
 
+# 🐍 Archivos de Python
 __pycache__/
 *.py[cod]
-*.log
+*.pyo
+*.pyd
+
+# 📂 Entornos virtuales
 env/
 venv/
+ENV/
 .venv/
+
+# 🧪 Archivos de pruebas
+*.log
+*.tmp
+
+# 💻 Configuración de editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 📁 Archivos del sistema
 .DS_Store
+Thumbs.db
+
+# 🚫 Archivos personales
+*.bak
+*.swp
+
+# 🧪 Archivos de ejecución
+*.exe
+*.out
+*.class
+
+# ⚙️ Git configuraciones locales
+.gitconfig
