@@ -28,7 +28,7 @@ python adivina_el_pais.py
 
 ahorcado/
 ├──  adivina_el_pais.py   # Código fuente del juego
-└── README.md                   # Este archivo con la documentación
+└── README.md             # Este archivo con la documentación
 
 Este juego aplica conceptos básicos y esenciales aprendidos en clase:
 
