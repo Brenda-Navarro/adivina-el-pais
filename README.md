@@ -24,16 +24,16 @@ Después de cada partida, el jugador puede elegir si desea volver a jugar o no.
 3. Ejecuta el archivo en la terminal o IDE:
 
 ```bash
-python ahorcado_paises_europa.py
+python adivina_el_pais.py
 
 ahorcado/
-├── ahorcado_paises_europa.py   # Código fuente del juego
-└── README.md                   # Este archivo con la documentación
+├── adivina_el_pais.py # Código fuente del juego
+└── README.md          # Este archivo con la documentación
 
 Este juego aplica conceptos básicos y esenciales aprendidos en clase:
 
 ✅ Estructuras de control: if, while, for
-✅ Colecciones: set, dict
+✅ Colecciones: set, dict, list
 ✅  Funciones y modularización
 ✅  Recursividad
 ✅  Validación de entrada de usuario
@@ -47,3 +47,4 @@ Este juego aplica conceptos básicos y esenciales aprendidos en clase:
 #Contacto: bnavarro0403@gmail.com
 
 ```
+# adivina-el-pais
