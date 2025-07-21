@@ -1,38 +1,40 @@
-
-# 🐍 Archivos de Python
+# ⛔ Ignorar archivos de entorno y caché de Python
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
 
-# 📂 Entornos virtuales
+# Archivos del entorno virtual
 env/
 venv/
 ENV/
 .venv/
+env.bak/
 
-# 🧪 Archivos de pruebas
-*.log
-*.tmp
-
-# 💻 Configuración de editores
+# Archivos de configuración de editores
 .vscode/
 .idea/
-*.sublime-project
-*.sublime-workspace
+*.swp
 
-# 📁 Archivos del sistema
+# Archivos de sistema
 .DS_Store
 Thumbs.db
 
-# 🚫 Archivos personales
+# Archivos de log o pruebas
+*.log
+*.tmp
+
+# Archivos de salida o backups
 *.bak
-*.swp
+*.old
 
-# 🧪 Archivos de ejecución
-*.exe
-*.out
-*.class
+# Ignorar archivos generados
+*.zip
+*.tar.gz
+*.egg-info/
+dist/
+build/
 
-# ⚙️ Git configuraciones locales
-.gitconfig
+# Archivos personales opcionales
+secrets.env
+

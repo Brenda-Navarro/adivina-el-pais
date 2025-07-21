@@ -1,44 +1,49 @@
-# 🌍 Adivina el País - Juego en Python
+# 🎮 Ahorcado de Países
 
-Un juego interactivo en consola para adivinar países del mundo, utilizando programación funcional y estructuras avanzadas en Python.
-
----
-
-## 🎯 Objetivo
-
-El jugador debe adivinar el nombre de un país letra por letra, con una pista proporcionada por el programa. Tiene 6 vidas para lograrlo. Cada error le resta una vida.
+Este proyecto es un juego clásico del Ahorcado creado en Python, pero con una temática educativa: ¡adivinar países de Europa con pistas desafiantes!
 
 ---
 
-## 🧠 Conceptos aplicados
+## 🧾 Descripción
 
-Este proyecto fue desarrollado con fines educativos e incluye los siguientes temas del curso:
+El jugador debe adivinar el nombre de un país europeo oculto, letra por letra, guiándose por una pista compleja. El jugador cuenta con **5 vidas** y pierde una por cada intento incorrecto.  
+El juego termina cuando:
 
-- ✅ Funciones anidadas
-- ✅ Funciones recursivas
-- ✅ Decoradores
-- ✅ Funciones `lambda`
-- ✅ Generadores
-- ✅ Manejo de `*args` y `**kwargs`
-- ✅ Diccionarios (llaves, valores, eliminación)
-- ✅ Sets (conjuntos)
-- ✅ List comprehension
-- ✅ Estructuras `while` y `for`
-- ✅ Enumerate, range
-- ✅ Control de flujo: `break`, `continue`, `return`
-- ✅ Validación de datos
+- ✅ Adivina todas las letras del país (¡GANA!).
+- ❌ Se queda sin vidas (¡PIERDE!).
+- 👋 Decide no continuar jugando (el juego finaliza con despedida).
+
+Después de cada partida, el jugador puede elegir si desea volver a jugar o no.
 
 ---
 
-## 🎮 Cómo jugar
+## ▶️ ¿Cómo jugar?
 
-1. Al iniciar el programa, se seleccionará un país aleatorio de una lista de 20.
-2. Se mostrará una pista y los espacios en blanco para cada letra.
-3. El jugador debe ingresar letras una por una.
-4. Si acierta, se revela la letra. Si se equivoca, pierde una vida.
-5. El juego termina cuando:
-   - Se adivina todo el país ✅
-   - Se terminan las vidas ❌
-   - El jugador decide salir 🚪
+1. Descarga o clona este repositorio.
+2. Asegúrate de tener Python instalado.
+3. Ejecuta el archivo en la terminal o IDE:
 
----
+```bash
+python ahorcado_paises_europa.py
+
+ahorcado/
+├── ahorcado_paises_europa.py   # Código fuente del juego
+└── README.md                   # Este archivo con la documentación
+
+Este juego aplica conceptos básicos y esenciales aprendidos en clase:
+
+✅ Estructuras de control: if, while, for
+✅ Colecciones: set, dict
+✅  Funciones y modularización
+✅  Recursividad
+✅  Validación de entrada de usuario
+✅  Uso del módulo random
+✅  Decoradores personalizados para formato
+✅  Generadores para mostrar el estado de la palabra
+
+👩‍💻 Autor
+#Brenda Navarro
+#Estudiante de programación ADA ITW – Proyecto académico en Python.
+#Contacto: bnavarro0403@gmail.com
+
+```

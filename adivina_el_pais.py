@@ -1,104 +1,90 @@
 import random
 
-# ========= 1. Diccionario con 20 países y sus pistas =========
+# Diccionario de países
 paises = {
-    "ITALIA": "País europeo con forma de bota.",
-    "PERU": "Tiene Machu Picchu y está en Sudamérica.",
-    "JAPON": "Isla asiática famosa por su tecnología.",
-    "EGIPTO": "Conocido por las pirámides y el Nilo.",
-    "CANADA": "País muy frío en América del Norte.",
-    "INDIA": "Tiene el Taj Mahal y muchas especias.",
-    "CHILE": "País largo y angosto en Sudamérica.",
-    "KENIA": "Famoso por sus safaris africanos.",
-    "GRECIA": "Cuna de la democracia.",
-    "AUSTRALIA": "Donde viven los canguros.",
-    "MEXICO": "Tiene mariachi, tacos y tequila.",
-    "CHINA": "Gran Muralla y dragones.",
-    "ESPAÑA": "Flamenco, paella y siesta.",
-    "FRANCIA": "La Torre Eiffel y el vino.",
-    "ALEMANIA": "Cuna de Beethoven y los autos.",
-    "ARGENTINA": "Famosa por el tango y Messi.",
-    "BRASIL": "Samba, carnaval y Amazonía.",
-    "COLOMBIA": "Café, arepas y flores.",
-    "TURQUIA": "Cruce entre Europa y Asia.",
-    "COREA": "Del K-pop y alta tecnología."
+    "ALEMANIA": "Su capital fue dividida por un muro durante la Guerra Fría",
+    "FRANCIA": "Su revolución marcó un antes y un después en la historia mundial",
+    "ITALIA": "Su territorio forma una figura que recuerda una bota",
+    "ESPAÑA": "Antiguo imperio cuya lengua es hoy una de las más habladas del mundo",
+    "PORTUGAL": "Cuna de grandes navegantes de la era de los descubrimientos",
+    "SUIZA": "País neutral, famoso por sus relojes, chocolate y bancos",
+    "SUECIA": "Monarquía escandinava con premios de ciencia y paz",
+    "NORUEGA": "Famoso por sus fiordos y haber rechazado unirse a la UE",
+    "FINLANDIA": "Su sistema educativo está entre los mejores del mundo",
+    "DINAMARCA": "Parte de Escandinavia, tiene una monarquía muy antigua",
+    "GRECIA": "Cuna de la filosofía occidental y los Juegos Olímpicos",
+    "PAISES BAJOS": "Conocido por sus tulipanes, molinos y políticas progresistas",
+    "AUSTRIA": "Tierra de Mozart, montañas y cafés históricos",
+    "BÉLGICA": "Sede de la Unión Europea y famosa por sus chocolates",
+    "IRLANDA": "Isla esmeralda con gran tradición musical y literaria",
+    "POLONIA": "Invadida en 1939, fue el inicio de la Segunda Guerra Mundial",
+    "HUNGRÍA": "Ubicada en Europa Central, su idioma es uno de los más difíciles",
+    "RUMANIA": "Lugar donde nació la leyenda de Drácula",
+    "CHEQUIA": "Antes parte de Checoslovaquia, con capital en Praga",
+    "CROACIA": "Destino turístico del Adriático con historia y playas"
 }
 
-# ========= 2. Decorador para imprimir separadores =========
-def separar(func):
-    def wrapper(*args, **kwargs):
-        print("\n" + "-" * 45)
-        resultado = func(*args, **kwargs)
-        print("-" * 45 + "\n")
-        return resultado
-    return wrapper
+#Función para construir la palabra con letras adivinadas
+def mostrar_palabra(palabra, letras_adivinadas):
+    return ' '.join([letra if letra in letras_adivinadas or letra == ' ' else '_' for letra in palabra])
 
-# ========= 3. Generador para mostrar progreso =========
-def generar_ocultas(palabra, letras):
-    return (letra if letra in letras else "_" for letra in palabra)
+#Mostrar estado del juego
+def mostrar_estado(palabra, letras_adivinadas, vidas, letras_incorrectas, pista):
+    print("\n🧠 Pista:", pista)
+    print("🔤 Palabra:", mostrar_palabra(palabra, letras_adivinadas))
+    print("❤️ Vidas restantes:", vidas)
+    print("❌ Letras incorrectas:", ' '.join(letras_incorrectas) or "Ninguna")
 
-# ========= 4. Función anidada para validar la letra =========
-def obtener_letra():
-    def es_valida(letra):
-        return letra.isalpha() and len(letra) == 1
-    while True:
-        entrada = input("Ingresa una letra: ").upper()
-        if es_valida(entrada):
-            return entrada
-        print("❌ Solo se acepta UNA letra válida del alfabeto.")
-
-# ========= 5. Mostrar estado del juego =========
-@separar
-def mostrar_estado(palabra, letras_correctas, letras_erradas, vidas, pista):
-    progreso = " ".join(generar_ocultas(palabra, letras_correctas))
-    print(f"📌 Pista: {pista}")
-    print(f"🔤 Palabra: {progreso}")
-    print(f"❤️ Vidas restantes: {vidas}")
-    if letras_erradas:
-        print(f"❌ Letras incorrectas: {', '.join(sorted(letras_erradas))}")
-
-# ========= 6. Juego principal con *args y **kwargs =========
-def jugar_adivina_el_pais(*args, **kwargs):
+#Jugar una partida
+def jugar_partida():
     palabra, pista = random.choice(list(paises.items()))
-    letras_correctas = set()
-    letras_erradas = set()
-    vidas = kwargs.get("vidas", 6)
+    letras_adivinadas = set()
+    letras_incorrectas = set()
+    vidas = 5
 
-    while True:
-        mostrar_estado(palabra, letras_correctas, letras_erradas, vidas, pista)
-        letra = obtener_letra()
+    while vidas > 0:
+        mostrar_estado(palabra, letras_adivinadas, vidas, letras_incorrectas, pista)
+        intento = input("🔎 Ingresa una letra: ").strip().upper()
 
-        if letra in letras_correctas or letra in letras_erradas:
-            print("⚠️ Ya ingresaste esa letra.")
+        if not intento.isalpha() or len(intento) != 1:
+            print("⚠️ Ingresa solo UNA letra.")
             continue
 
-        if letra in palabra:
-            letras_correctas.add(letra)
+        if intento in letras_adivinadas or intento in letras_incorrectas:
+            print("🔁 Ya usaste esa letra.")
+            continue
+
+        if intento in palabra:
+            letras_adivinadas.add(intento)
+            print("✅ ¡Correcto!")
         else:
-            letras_erradas.add(letra)
+            letras_incorrectas.add(intento)
             vidas -= 1
+            print("❌ ¡Incorrecto! Pierdes una vida.")
 
-        if set(palabra) <= letras_correctas:
-            mostrar_estado(palabra, letras_correctas, letras_erradas, vidas, pista)
-            print("🎉 ¡Felicidades! Adivinaste el país correctamente.")
-            break
-        elif vidas == 0:
-            mostrar_estado(palabra, letras_correctas, letras_erradas, vidas, pista)
-            print(f"💀 ¡Perdiste! El país era: {palabra}")
-            break
+        if all(letra in letras_adivinadas or letra == ' ' for letra in palabra):
+            print(f"\n🎉 ¡Ganaste! Adivinaste el país: {palabra}")
+            return
 
-# ========= 7. Recursividad para repetir el juego =========
-def iniciar_juego():
-    jugar_adivina_el_pais(vidas=6)
-    otra = input("¿Deseas jugar otra vez? (s/n): ").lower()
-    if otra == "s":
-        iniciar_juego()
-    else:
-        print("👋 ¡Gracias por jugar 'Adivina el País'!")
+    print(f"\n💀 ¡Perdiste! El país era: {palabra}")
 
-# ========= 8. Inicio del juego =========
+#Bucle principal del juego
+def jugar():
+    print("🎮 Bienvenido al Ahorcado Europeo 🌍")
+    print("🎯 Tu misión: Adivina el país europeo con ayuda de una pista.")
+    print("🧩 Tienes 5 vidas, cada error resta una.")
+    print("🔄 Puedes volver a jugar tras cada partida.\n")
+
+    while True:
+        jugar_partida()
+        decision = input("\n🔁 ¿Deseas jugar otra partida? (s/n): ").strip().lower()
+
+        if decision != 's':
+            confirmar = input("❓ ¿Presiona 's' para seguir jugando o cualquier otra tecla para salir?: ").strip().lower()
+            if confirmar != 's':
+                print("\n👋 ¡Gracias por jugar al Ahorcado Europeo! Hasta la próxima.\n")
+                break
+
+# === Iniciar juego ===
 if __name__ == "__main__":
-    print("🌍 Bienvenido a 'Adivina el País'")
-    print("Adivina letra por letra el país oculto.")
-    print("Tienes 6 vidas. Cada error te cuesta una vida.")
-    iniciar_juego()
+    jugar()
