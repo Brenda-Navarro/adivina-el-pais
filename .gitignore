@@ -1,0 +1,40 @@
+# ⛔ Ignorar archivos de entorno y caché de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Archivos del entorno virtual
+env/
+venv/
+ENV/
+.venv/
+env.bak/
+
+# Archivos de configuración de editores
+.vscode/
+.idea/
+*.swp
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de log o pruebas
+*.log
+*.tmp
+
+# Archivos de salida o backups
+*.bak
+*.old
+
+# Ignorar archivos generados
+*.zip
+*.tar.gz
+*.egg-info/
+dist/
+build/
+
+# Archivos personales opcionales
+secrets.env
+
