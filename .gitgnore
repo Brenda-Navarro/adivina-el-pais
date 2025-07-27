@@ -1,0 +1,28 @@
+# Ignora archivos y carpetas generados automáticamente
+
+# Carpeta de distribución generada por PyInstaller
+/dist/
+/build/
+
+# Archivo de configuración generado por PyInstaller
+*.spec
+
+# Cachés de Python
+__pycache__/
+/*.pyc
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Entornos virtuales (si los usas)
+.venv/
+env/
+venv/
+
+# Archivos temporales
+*.log
+*.tmp
+
+# Ejecutables generados
+*.exe
