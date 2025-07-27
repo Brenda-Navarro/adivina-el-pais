@@ -15,20 +15,22 @@ Adivina el País es un juego interactivo estilo "ahorcado" donde el jugador elig
 - Generadores para mostrar el estado progresivo del ahorcado
 
 ## 🚀 ¿Cómo jugar?
+
 1. Ejecuta el archivo `adivina_el_pais.py` en tu entorno de Python (recomendado: VSCode).
 2. Elige una región escribiendo el número correspondiente.
 3. Adivina el nombre del país, letra por letra.
 4. Pierdes una vida por cada error. El ahorcado aparece progresivamente.
-5. Cuando queden 3 vidas, aparecerán pistas (más difíciles en regiones como América).
-6. Cada acierto suma 10 puntos, hasta llegar a un reconocimiento máximo de 1000 puntos.
-7. Siempre puedes seguir jugando o salir cuando desees. El score se mantiene.
+5. Cuando queden 3 vidas, aparecerán pistas.
+6. Cada acierto suma 10 puntos, intenta acumular más puntos para obtener reconocimientos.
+7. Siempre puedes seguir jugando o salir cuando desees.
 
 ## 📦 Archivos incluidos
+
 - `adivina_el_pais.py`: Código fuente del juego.
 - `README.md`: Este documento con instrucciones y detalles técnicos.
 - `.gitignore`: Exclusión de archivos innecesarios para GitHub.
 
-## 
+##
 
 👩‍💻 Autor
 #Brenda Navarro
